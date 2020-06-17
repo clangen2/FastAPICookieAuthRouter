@@ -169,14 +169,14 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
-@router.post("/users/{user_id}/items/", response_model=schema.item)
+@router.post("/users/{user_id}/items/", response_model=schema.Item)
 def create_item_for_user(
-    user_id: int, item: schema.itemCreate, sections : str, db: Session = Depends(get_db)
+    user_id: int, item: schema.ItemCreate, sections : str, db: Session = Depends(get_db)
 ):
     return crud.create_user_item(db=db, item=item, sections = sections, user_id=user_id)
 
 
-@router.get("/items/", response_model=List[schema.item])
+@router.get("/items/", response_model=List[schema.Item])
 def items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
