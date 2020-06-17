@@ -33,6 +33,5 @@ class User(UserBase):
     id: int
     is_active: bool
     items: List[Item] = []
-    no_add_access: bool
     class Config:
         orm_mode = True
